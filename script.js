@@ -1,7 +1,10 @@
 var studentsToHide = document.getElementsByClassName('student-item');
+//Message "No Student is found" is generated
 var message = document.createElement('div');
 message.innerHTML = '<div class="message"><p>No Students Found!</p></div>';
 message.style.textAlign = "center";
+//Search bar is generated
+$('.page-header').append('<div class="page-header student-search"><button class="page-header student-search" type="button" name="button">Search</button><input class="page-header student-search" type="text" name="" value=""></div>');
 
 
 //accepts parameters from appendPageLinks function. First value is indicate clicked page, second is stands for list of the students
