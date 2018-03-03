@@ -9,20 +9,32 @@ $('.page-header').append('<div class="page-header student-search"><button class=
 
 //accepts parameters from appendPageLinks function. First value is indicate clicked page, second is stands for list of the students
 function showPage(pageNumber, studentsToPrint) {
+  //declaring variable needed to start the loop
+  var begining = pageNumber * 10;
+  //declaring variable needed to finish the loop
+  var pageEnd;
+  //declaring variable needed to store students who needs to be printed out on web page
   var members;
   members = studentsToPrint;
-  var chosen = [];
-  //pushing number into an array and chcecking if clicked Page wasn't 1
-  chosen.push(pageNumber);
-  if (chosen !== 0) {
-    //Multiply chosen variable by 10
-    chosen = chosen * 10;
+  //multiply number of pages by 10
+  var lastItem = pageNumber * 10;
+  //Checking if clicked page is "0"
+  if (pageNumber == 0) {
+    //seting begining of the loop to 0 and end to 10
+    begining = 0;
+    pageEnd = pageNumber + 10;
+    //if it is not last page setting proper end of the loop
+  } else if (pageNumber !== 0 && lastItem + 10 < members.length) {
+    pageEnd = (pageNumber * 10) + 10;
+    //if last page was clicked seting proper end of the loop
+  } else if (pageNumber !== 0 && lastItem + 10 > members.length) {
+    pageEnd = members.length;
   }
   //Hideing all of the students on the list
   $('.student-item').hide();
   //Printing students from proper page
-  for (i = chosen; i < chosen + 10; i ++) {
-    members[i].style.display = 'block';
+  for (i = begining; i < pageEnd; i ++) {
+        members[i].style.display = 'block';
   }
 }
 //function accepts one parameter which is list of the students who needs to be printed on the page
